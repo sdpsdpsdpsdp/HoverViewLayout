@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        hoverView = findViewById(R.id.hoverView);
+        hoverView = (HoverViewLayout) findViewById(R.id.hoverView);
 
         initEvent();
     }
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 .addBottomLayout(R.layout.bottom_view)
                 .showHoverView();
 
-        ListView listView = hoverView.getBottomView().findViewById(R.id.lv);
+        ListView listView = (ListView) hoverView.getBottomView().findViewById(R.id.lv);
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             list.add("第" + i + "个项目");
