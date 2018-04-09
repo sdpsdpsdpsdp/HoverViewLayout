@@ -43,11 +43,11 @@ public class HoverViewLayout extends RelativeLayout implements HoverScrollView.O
     private void init(Context context) {
         this.context = context;
         View view = View.inflate(context, R.layout.hover_view, this);
-        HoverScrollView scrollView = view.findViewById(R.id.scrollView);
-        llBottomLayout = view.findViewById(R.id.ll_outside_layout);
-        llTopLayout = view.findViewById(R.id.ll_top_layout);
-        llShowOrHideLayout = view.findViewById(R.id.ll_show_or_hide_view);
-        llAlwaysShowLayout = view.findViewById(R.id.ll_always_show_view);
+        HoverScrollView scrollView = (HoverScrollView) view.findViewById(R.id.scrollView);
+        llBottomLayout = (LinearLayout) view.findViewById(R.id.ll_outside_layout);
+        llTopLayout = (LinearLayout) view.findViewById(R.id.ll_top_layout);
+        llShowOrHideLayout = (LinearLayout) view.findViewById(R.id.ll_show_or_hide_view);
+        llAlwaysShowLayout = (LinearLayout) view.findViewById(R.id.ll_always_show_view);
         scrollView.setOnScrollListener(this);
     }
 
