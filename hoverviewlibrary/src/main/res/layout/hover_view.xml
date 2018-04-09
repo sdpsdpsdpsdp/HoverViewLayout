@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.laisontech.hoverviewlibrary.HoverScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_outside_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+                <!--添加该布局
+                用于显示悬停布局上方的内容-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_show_or_hide_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--添加该布局
+                以及下面的always布局中添加相同的布局，用于悬停某个布局-->
+            </LinearLayout>
+            <!--添加该布局
+            是用于显示悬停布局下方的内容-->
+        </LinearLayout>
+    </com.laisontech.hoverviewlibrary.HoverScrollView>
+    <!--
+    该布局是用于显示悬停的部分显示,两者同时只添加相同的布局
+    -->
+    <LinearLayout
+        android:id="@+id/ll_always_show_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</RelativeLayout>
