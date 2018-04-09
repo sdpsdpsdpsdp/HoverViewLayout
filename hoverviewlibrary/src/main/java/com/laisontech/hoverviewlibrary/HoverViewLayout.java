@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
  * 悬停布局的view
  */
 
-public class HoverViewLayout extends RelativeLayout implements HoverScrollView.OnScrollListener {
+public class HoverViewLayout extends RelativeLayout implements HoverScrollView.OnScrollListener, HoverScrollView.OnActionMoveListener {
 
     private LinearLayout llBottomLayout;
     private LinearLayout llTopLayout;
@@ -26,6 +26,8 @@ public class HoverViewLayout extends RelativeLayout implements HoverScrollView.O
     private View hoverView;
     private View topView;
     private View bottomView;
+    private View moveGoneView;
+    private View moveVisibleView;
 
     public HoverViewLayout(Context context) {
         this(context, null);
@@ -49,6 +51,7 @@ public class HoverViewLayout extends RelativeLayout implements HoverScrollView.O
         llShowOrHideLayout = (LinearLayout) view.findViewById(R.id.ll_show_or_hide_view);
         llAlwaysShowLayout = (LinearLayout) view.findViewById(R.id.ll_always_show_view);
         scrollView.setOnScrollListener(this);
+        scrollView.setMoveListener(this);
     }
 
     @Override
@@ -138,6 +141,7 @@ public class HoverViewLayout extends RelativeLayout implements HoverScrollView.O
         return hoverView;
     }
 
+    //
     @Override
     public void onScroll(int scrollY) {
         if (getHoverView() == null) return;
@@ -170,5 +174,41 @@ public class HoverViewLayout extends RelativeLayout implements HoverScrollView.O
         params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
         //循环完之后,要计算出getDividerHeight(空白处占得height)   才是Listview的高度
         listView.setLayoutParams(params);
+    }
+
+    public void setViewMoveGone(View moveGoneView) {
+        this.moveGoneView = moveGoneView;
+    }
+
+    private View getMoveGoneView() {
+        return moveGoneView;
+    }
+
+    private View getMoveVisibleView() {
+        return moveVisibleView;
+    }
+
+    public void setMoveVisibleView(View moveVisibleView) {
+        this.moveVisibleView = moveVisibleView;
+    }
+
+    @Override
+    public void move(boolean isMove) {
+        if (getMoveGoneView() != null) {
+            if (isMove) {
+                getMoveGoneView().setVisibility(GONE);
+            } else {
+                getMoveGoneView().setVisibility(VISIBLE);
+            }
+        }
+
+        if (getMoveVisibleView() != null) {
+            if (isMove) {
+                getMoveVisibleView().setVisibility(VISIBLE);
+            } else {
+                getMoveVisibleView().setVisibility(GONE);
+            }
+        }
+
     }
 }
